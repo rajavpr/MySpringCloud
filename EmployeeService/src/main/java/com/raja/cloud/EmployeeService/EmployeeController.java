@@ -23,15 +23,22 @@ public class EmployeeController {
 
 	@Autowired
 	RestTemplate restTemplate;
+	
+	@Autowired
+	AddressClient addressClient;
 	  
 	@RequestMapping("/getdefaultvalues")
 	public String getDefaultDetails() {
 		
-		ResponseEntity<String> response = restTemplate.getForEntity("http://AddressService/address", String.class);
+/*		ResponseEntity<String> response = restTemplate.getForEntity("http://AddressService/address", String.class);
 		
 		System.out.println(response.getStatusCode()+" " + response.getStatusCodeValue());
 		
 		return id+" "+department+" "+role+response.getBody();
+*/
+		
+		return id+" "+department+" "+role+addressClient.getAddress();
+		
 	}
 	
 }
